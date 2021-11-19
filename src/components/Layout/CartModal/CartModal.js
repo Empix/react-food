@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import CartContext from '../../../store/cart-context';
 import Modal from '../../UI/Modal/Modal';
 import Price from '../../UI/Price/Price';
 import CartItem from './CartItem';
@@ -6,27 +7,8 @@ import CartItem from './CartItem';
 import styles from './CartModal.module.css';
 
 export default function CartModal(props) {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      name: 'Apple',
-      price: 1.5,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: 'Orange',
-      price: 2.5,
-      quantity: 2,
-    },
-    {
-      id: 3,
-      name: 'Banana',
-      price: 3.5,
-      quantity: 2,
-    },
-  ]);
   const [total, setTotal] = useState(0);
+  const { items } = useContext(CartContext);
 
   useEffect(() => {
     setTotal(items.reduce((acc, item) => acc + item.price * item.quantity, 0));
