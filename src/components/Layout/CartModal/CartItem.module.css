@@ -1,0 +1,48 @@
+.item {
+  width: 100%;
+  border-bottom: 1.5px solid rgba(255, 92, 88, 0.5);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  color: #252728;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.info h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.info div {
+  display: flex;
+  align-items: flex-end;
+  gap: 25px;
+}
+
+.info div span {
+  border: 1px solid rgba(255, 92, 88, 0.5);
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: block;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.actions button {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #ff5c58;
+  color: #ff5c58;
+  transition: all 0.3s;
+}
+
+.actions button:hover {
+  background-color: #ff5c58;
+  color: #f3f2f0;
+}

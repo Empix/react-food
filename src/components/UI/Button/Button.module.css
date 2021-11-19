@@ -1,0 +1,21 @@
+.button {
+  border-radius: 10px;
+  border: none;
+  background-color: #ff5c58;
+  color: #f3f2f0;
+  padding: 4px 16px;
+  font-size: 1.1em;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button:hover {
+  filter: contrast(110%) brightness(110%);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
