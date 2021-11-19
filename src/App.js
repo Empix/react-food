@@ -4,15 +4,18 @@ import Meals from './components/Layout/Meals/Meals';
 
 import styles from './App.module.css';
 import Footer from './components/Layout/Footer/Footer';
+import { CartProvider } from './store/cart-context';
 
 function App() {
   return (
-    <div className={styles.wrapper}>
-      <Header />
-      <Hero />
-      <Meals />
-      <Footer />
-    </div>
+    <CartProvider>
+      <div className={styles.wrapper}>
+        <Header />
+        <Hero />
+        <Meals />
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }
 
