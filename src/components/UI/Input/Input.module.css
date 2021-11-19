@@ -1,0 +1,28 @@
+.input-wrapper {
+  font-size: 1em;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-wrapper input {
+  padding: 4px 8px;
+  border: 1px solid rgba(37, 39, 40, 0.2);
+  border-radius: 10px;
+  background-color: #f3f2f0;
+  font-weight: bold;
+  text-align: center;
+  width: 50px;
+}
+
+.input-wrapper input::-webkit-outer-spin-button,
+.input-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-wrapper label {
+  font-weight: bold;
+  cursor: pointer;
+}
