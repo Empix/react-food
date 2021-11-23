@@ -1,0 +1,15 @@
+.loading {
+  border-radius: 50%;
+  border: 8px solid #ffc5c4;
+  border-top: 8px solid #ff5c58;
+  animation: spin 0.9s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,45 +1,46 @@
+import { useEffect, useState } from 'react';
 import Card from '../../UI/Card/Card';
+import Loading from '../../UI/Loading/Loading';
 import MealItem from './MealItem';
 import styles from './Meals.module.css';
 
-const MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
-
 export default function Meals() {
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        'https://react-food-21b62-default-rtdb.firebaseio.com/meals.json'
+      );
+      const data = await response.json();
+
+      const fetchedMeals = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
+
+      setIsLoading(false);
+      setMeals(fetchedMeals);
+    }
+
+    fetchData();
+  }, []);
+
+  let content = <p>No meals found</p>;
+
+  if (meals.length > 0) {
+    content = meals.map((meal) => <MealItem key={meal.id} data={meal} />);
+  }
+
+  if (isLoading) {
+    content = <Loading />;
+  }
+
   return (
     <div className={styles.meals}>
       <Card className={styles['meals-card']}>
-        <ul>
-          {MEALS.length === 0 && (
-            <div className={styles.empty}>No meals found.</div>
-          )}
-          {MEALS.length > 0 &&
-            MEALS.map((meal) => <MealItem key={meal.id} data={meal} />)}
-        </ul>
+        <ul>{content}</ul>
       </Card>
     </div>
   );
