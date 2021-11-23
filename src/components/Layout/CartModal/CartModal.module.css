@@ -21,3 +21,8 @@
   text-align: center;
   margin-bottom: 20px;
 }
+
+.meals-list {
+  max-height: 50vh;
+  overflow-y: scroll;
+}

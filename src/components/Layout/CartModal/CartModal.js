@@ -26,7 +26,7 @@ export default function CartModal(props) {
       )}
       {items.length > 0 && (
         <>
-          <ul>
+          <ul className={styles['meals-list']}>
             {items.map((item) => (
               <CartItem key={item.id} data={item} />
             ))}
