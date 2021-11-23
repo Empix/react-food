@@ -9,7 +9,7 @@ import CartContext from '../../../store/cart-context';
 export default function Header() {
   const [showCart, setShowCart] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
-  const { items } = useContext(CartContext);
+  const { items, clearCart } = useContext(CartContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
@@ -45,6 +45,7 @@ export default function Header() {
     );
     setIsLoading(false);
     setDidSubmit(true);
+    clearCart();
   }
 
   return (

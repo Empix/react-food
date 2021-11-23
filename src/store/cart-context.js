@@ -4,6 +4,7 @@ const CartContext = React.createContext({
   items: [],
   addItem: (data) => {},
   removeItem: (id, amount) => {},
+  clearCart: () => {},
 });
 
 export function CartProvider(props) {
@@ -52,10 +53,15 @@ export function CartProvider(props) {
     });
   }
 
+  function clearCart() {
+    setItems([]);
+  }
+
   const values = {
     items,
     addItem,
     removeItem,
+    clearCart,
   };
 
   return (
