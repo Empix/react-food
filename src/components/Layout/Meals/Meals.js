@@ -7,12 +7,18 @@ import styles from './Meals.module.css';
 export default function Meals() {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
         'https://react-food-21b62-default-rtdb.firebaseio.com/meals.json'
       );
+
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
+
       const data = await response.json();
 
       const fetchedMeals = Object.keys(data).map((key) => ({
@@ -24,10 +30,13 @@ export default function Meals() {
       setMeals(fetchedMeals);
     }
 
-    fetchData();
+    fetchData().catch((err) => {
+      setIsLoading(false);
+      setError(err.message);
+    });
   }, []);
 
-  let content = <p>No meals found</p>;
+  let content = <p className={styles.info}>No meals found</p>;
 
   if (meals.length > 0) {
     content = meals.map((meal) => <MealItem key={meal.id} data={meal} />);
@@ -35,6 +44,10 @@ export default function Meals() {
 
   if (isLoading) {
     content = <Loading />;
+  }
+
+  if (error) {
+    content = <p className={styles.error}>{error}</p>;
   }
 
   return (

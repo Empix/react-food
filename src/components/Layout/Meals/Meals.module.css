@@ -19,8 +19,13 @@
   align-items: center;
 }
 
-.empty {
+.meals-card p.info,
+.meals-card p.error {
   color: #252728;
   font-size: 1.4em;
   font-weight: bold;
+}
+
+.meals-card p.error {
+  color: #ff5c58;
 }
