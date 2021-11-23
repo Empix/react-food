@@ -18,6 +18,7 @@ export default function Modal(props) {
             disabled={props.disableActionButton}
             className={styles['action-button']}
             onClick={props.onConfirm}
+            buttonProps={props.actionButtonProps}
           >
             {props.actionButtonText || 'Okay'}
           </Button>

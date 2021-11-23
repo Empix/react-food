@@ -17,6 +17,7 @@ export default function CartModal(props) {
   return (
     <Modal
       onClose={props.onClose}
+      onConfirm={props.onConfirm}
       className={styles.cart}
       actionButtonText="Order"
       disableActionButton={items.length === 0}
